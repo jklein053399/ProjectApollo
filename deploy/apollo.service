@@ -1,0 +1,28 @@
+# Apollo Core API Service
+# Install: sudo cp apollo.service /etc/systemd/system/
+#          sudo systemctl daemon-reload
+#          sudo systemctl enable apollo
+#          sudo systemctl start apollo
+
+[Unit]
+Description=Apollo Core API Server
+After=network.target
+
+[Service]
+Type=simple
+User=apollo
+Group=apollo
+WorkingDirectory=/opt/apollo
+ExecStart=/opt/apollo/venv/bin/uvicorn src.main:app --host 0.0.0.0 --port 8000
+Restart=on-failure
+RestartSec=5
+Environment=APOLLO_ENV=production
+Environment=APOLLO_DEVICE=pi5
+
+# Hardening
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/apollo
+
+[Install]
+WantedBy=multi-user.target
