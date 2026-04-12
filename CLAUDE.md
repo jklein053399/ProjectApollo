@@ -17,3 +17,13 @@ Read these files for full project context:
 - `source venv/bin/activate` (when on Pi)
 - `uvicorn src.main:app --host 0.0.0.0 --port 8000`
 - Tests: `pytest tests/`
+
+## Phase 1 Deployment (Pi 5)
+- **Hostname:** `CyberDeck` — SSH as `cypherklein@<ip>` (see project memory for current IP)
+- **Deploy path:** `/home/cypherklein/apollo/` (mirrors repo layout + `venv/` + `.env`)
+- **Service:** `apollo.service` (systemd) — `sudo systemctl {status,restart,stop} apollo`
+- **Logs:** `sudo journalctl -u apollo -f`
+- **Boot:** NVMe primary, SD as passive fallback (`BOOT_ORDER=0xf416`)
+
+## Repository
+https://github.com/jklein053399/ProjectApollo (origin/main)
