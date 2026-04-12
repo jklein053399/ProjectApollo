@@ -16,6 +16,7 @@ Rolling priority list maintained across sessions. Items flow: Priority → in-pr
 4. **ESP32 ring (BLE trigger)** — awaiting hardware + Bluetooth stack decisions.
 5. **Overlayfs read-only root** — Session 5 integration-risk mitigation #6 (SD/NVMe corruption protection). Defer until pipelines are working; premature hardening otherwise.
 6. **Combined USB audio device** — Session 5 integration-risk mitigation #5 (audio clock drift). Defer until audio I/O is being built.
+7. **Claude Code as T3 dispatch tier (cloud escape hatch).** Install `@anthropic-ai/claude-code` on the Core and wire it in as the 4th tier in the T0 → T1 Sonnet → T2 Opus → T3 Claude Code dispatch chain, for intents the classifier/LLMs can't resolve. Adds agentic fallback without breaking offline-first (Layers 1–2 stay local). Requires T0 keyword dispatcher + T0.5 classifier working first to avoid expensive fall-through. Two other interpretations considered and rejected: (a) Claude Code as primary Cyberdeck UI — breaks offline-first, and (c) Claude Code as orthogonal dev/admin terminal — fine but not Apollo-architectural.
 
 ## Completed Archive
 
