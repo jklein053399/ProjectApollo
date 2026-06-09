@@ -10,6 +10,7 @@ Rolling priority list maintained across sessions. Items flow: Priority → in-pr
 
 ## Parked
 
+0. **Decide fate of remaining untracked work** (flagged 2026-06-09): `blender/` (incl. `.blend1`–`.blend20` backup files — gitignore those at minimum if ever committed), `docs/Apollo_AMP_Spec.md`, `docs/Apollo_Cyberdeck_Enclosure_Spec.md`, `.claude/settings.local.json`, `.claude/worktrees/`. Options: commit, gitignore, or archive elsewhere. `scad/` was gitignored same day per user decision — CAD stays local-only.
 1. **STT on device** — `faster-whisper` install, mic capture via `pyaudio` or similar, basic `/transcribe` endpoint. Larger scope; Pi 5 performance validation involved. Queue after dispatcher exists.
 2. **SSH key auth on Pi** — currently password-only. Keys would let Claude run commands non-interactively from Windows (eliminating the `!` prefix interactive flow entirely). Low urgency, high quality-of-life.
 3. **Halo glasses integration** — awaiting hardware.
