@@ -19,9 +19,9 @@ Read these files for full project context:
 - Tests: `pytest tests/`
 
 ## Phase 1 Deployment (Pi 5)
-- **Hostname:** `CyberDeck` — SSH as `cypherklein@<ip>` (see project memory for current IP)
-- **Deploy path:** `/home/cypherklein/apollo/` (mirrors repo layout + `venv/` + `.env`)
-- **Service:** `apollo.service` (systemd) — `sudo systemctl {status,restart,stop} apollo`
+- **Hostname:** `CyberDeck` — SSH via `ssh cyberdeck` (alias in Windows `~/.ssh/config`: user `cypherklein` @ 10.0.0.138 + ed25519 key; account name is all-lowercase — `cypherKlein` fails)
+- **Deploy:** `ssh cyberdeck "bash ~/apollo/deploy/deploy.sh"` — git-pull based; `/home/cypherklein/apollo/` is a git checkout of origin/main (+ untracked `venv/` and `.env`)
+- **Service:** `apollo.service` (systemd) — `sudo systemctl {status,restart,stop} apollo`; sudo is NOPASSWD on the Pi
 - **Logs:** `sudo journalctl -u apollo -f`
 - **Boot:** NVMe primary, SD as passive fallback (`BOOT_ORDER=0xf416`)
 
